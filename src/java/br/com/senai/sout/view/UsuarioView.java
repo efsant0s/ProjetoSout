@@ -5,7 +5,9 @@
  */
 package br.com.senai.sout.view;
 
+import br.com.senai.sout.dao.UsuarioDao;
 import br.com.senai.sout.model.Usuario;
+import java.util.List;
 
 /**
  *
