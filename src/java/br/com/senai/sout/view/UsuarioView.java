@@ -8,11 +8,13 @@ package br.com.senai.sout.view;
 import br.com.senai.sout.dao.UsuarioDao;
 import br.com.senai.sout.model.Usuario;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author Aluno
  */
+@ManagedBean
 public class UsuarioView {
     
     private UsuarioDao usuarioDao = new UsuarioDao();
