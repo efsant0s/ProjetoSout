@@ -38,6 +38,16 @@ public class Usuario implements Serializable {
     @Column
     private String ieAdmin;
 
+    public Usuario() {
+
+    }
+
+    public Usuario(String nomePadrao, String login, String senha) {
+        this.nome = nomePadrao;
+        this.login = login;
+        this.senha = senha;
+    }
+
     public int getId() {
         return id;
     }
@@ -154,6 +164,5 @@ public class Usuario implements Serializable {
         }
         return true;
     }
-    
 
 }
