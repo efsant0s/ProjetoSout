@@ -17,11 +17,10 @@ import javax.persistence.Id;
  *
  * @author Aluno
  */
-@Entity
+@Entity(name = "tb_usuario")
 public class Usuario implements Serializable {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     @Column
     private String login;
