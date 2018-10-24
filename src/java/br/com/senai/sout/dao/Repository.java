@@ -37,6 +37,5 @@ public class Repository {
     
     public static EntityManager getEm() {
         return em;
-    }
-    
+    }    
 }
