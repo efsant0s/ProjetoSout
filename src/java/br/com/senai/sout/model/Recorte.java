@@ -12,19 +12,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Aluno
  */
-@Entity(name = "tb_imagem")
-public class Imagem implements Serializable {
+@Entity(name = "tb_recorte")
+public class Recorte implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Integer id;
     @Column
     private String caminho;
     @JoinColumn()
+    @ManyToOne
     private Info info;
 
     public Integer getId() {
