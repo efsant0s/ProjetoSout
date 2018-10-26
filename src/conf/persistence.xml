@@ -3,6 +3,8 @@
   <persistence-unit name="ProjetoSOUTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.com.senai.sout.model.Usuario</class>
+    <class>br.com.senai.sout.model.Info</class>
+    <class>br.com.senai.sout.model.Recorte</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bancosout"/>

@@ -5,7 +5,7 @@
  */
 package br.com.senai.sout.dao;
 
-import br.com.senai.sout.model.Imagem;
+import br.com.senai.sout.model.Recorte;
 import br.com.senai.sout.model.Usuario;
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Leonardo.Lima
  */
 public class ImagemDAO {
-    public void save(Imagem i) {
+    public void save(Recorte i) {
         if (i.getId() == 0) {
             Repository.inserir(i);
         } else {
@@ -24,16 +24,16 @@ public class ImagemDAO {
         Repository.commitar();
     }
     
-    public void delete(Imagem i){
+    public void delete(Recorte i){
         Repository.excluir(i);
     }
     
-    public List<Imagem> getAll(){
+    public List<Recorte> getAll(){
         return Repository.getEm().createQuery("SELECT * FROM TB_IMAGEM").getResultList();
     }
     
-    public Imagem getbyId(Integer id){
-        return Repository.getEm().find(Imagem.class, id);
+    public Recorte getbyId(Integer id){
+        return Repository.getEm().find(Recorte.class, id);
     }
     
 }
