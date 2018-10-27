@@ -6,6 +6,7 @@
 package br.com.senai.sout.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,39 +19,89 @@ import javax.persistence.ManyToOne;
  *
  * @author Aluno
  */
-@Entity(name = "tb_recorte")
+@Entity(name = "Recorte")
 public class Recorte implements Serializable {
-    @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Integer id;
-    @Column
-    private String caminho;
-    @JoinColumn()
-    @ManyToOne
-    private Info info;
 
-    public Integer getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    
+    @Column
+    private String textoImagem;
+    @Column
+    private String dsComandoSQL;
+    @ManyToOne
+    @JoinColumn(name = "ID_CAPTURA")
+    private Captura capturaTela;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getCaminho() {
-        return caminho;
+    public String getTextoImagem() {
+        return textoImagem;
     }
 
-    public void setCaminho(String caminho) {
-        this.caminho = caminho;
+    public void setTextoImagem(String textoImagem) {
+        this.textoImagem = textoImagem;
     }
 
-    public Info getInfo() {
-        return info;
+    public String getDsComandoSQL() {
+        return dsComandoSQL;
     }
 
-    public void setInfo(Info info) {
-        this.info = info;
+    public void setDsComandoSQL(String dsComandoSQL) {
+        this.dsComandoSQL = dsComandoSQL;
+    }
+
+    public Captura getCapturaTela() {
+        return capturaTela;
+    }
+
+    public void setCapturaTela(Captura capturaTela) {
+        this.capturaTela = capturaTela;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.textoImagem);
+        hash = 59 * hash + Objects.hashCode(this.dsComandoSQL);
+        hash = 59 * hash + Objects.hashCode(this.capturaTela);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Recorte other = (Recorte) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.textoImagem, other.textoImagem)) {
+            return false;
+        }
+        if (!Objects.equals(this.dsComandoSQL, other.dsComandoSQL)) {
+            return false;
+        }
+        if (!Objects.equals(this.capturaTela, other.capturaTela)) {
+            return false;
+        }
+        return true;
     }
     
-}
+    
+    }

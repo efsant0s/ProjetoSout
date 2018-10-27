@@ -30,27 +30,29 @@ public class UsuarioDao {
 
     public List<Usuario> buscarTodos() {
         return Repository.getEm().
-                createQuery("select u from tb_usuario u").getResultList();
+                createQuery("select u from Usuario u").getResultList();
     }
 
     public Usuario buscaId(int id) {
         return Repository.getEm().find(Usuario.class, id);
     }
-    public void limpaTabelaUsuario(){
-        Repository.getEm().
-                createQuery("delete from tb_usuario where 1=1");
-        Repository.commitar();
+  
+    public Usuario buscaLogin(String login){
+        return (Usuario) Repository.getEm().
+                createQuery("select u from Usuario u where "
+                        + "u.login like :login").setParameter("login", "%" + login + "%")
+                .getSingleResult();
     }
 
     public Usuario buscaNome(String nome) {
         return (Usuario) Repository.getEm().
-                createQuery("select u from tb_usuario u where "
+                createQuery("select u from Usuario u where "
                         + "u.nome like :nome").setParameter("nome", "%" + nome + "%")
                 .getSingleResult();
     }
     public Long getQuantidadeRegistros(){
         return (Long) Repository.getEm().
-                createQuery("select count(u) qtd_registros from tb_usuario u")
+                createQuery("select count(u) qtd_registros from Usuario u")
                 .getSingleResult();
     }
 }

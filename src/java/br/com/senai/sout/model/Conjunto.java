@@ -19,20 +19,20 @@ import javax.persistence.ManyToOne;
  *
  * @author Aluno
  */
-@Entity(name = "tb_info")
-public class Info implements Serializable {
+@Entity(name = "Conjunto")
+public class Conjunto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     @Column
     private String nmTabelaNome;
-    @Column
-    private String dsComandoSQL;
-    @Column
+    @Column(length = 3)
     private String ieTipoBanco;
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO")
     private Usuario usuario;
+    @Column(length = 3,  nullable = false)
+    private String ieTipoConjunto;
 
     public int getId() {
         return id;
@@ -48,14 +48,6 @@ public class Info implements Serializable {
 
     public void setNmTabelaNome(String nmTabelaNome) {
         this.nmTabelaNome = nmTabelaNome;
-    }
-
-    public String getDsComandoSQL() {
-        return dsComandoSQL;
-    }
-
-    public void setDsComandoSQL(String dsComandoSQL) {
-        this.dsComandoSQL = dsComandoSQL;
     }
 
     public String getIeTipoBanco() {
@@ -74,14 +66,22 @@ public class Info implements Serializable {
         this.usuario = usuario;
     }
 
+    public String getIeTipoConjunto() {
+        return ieTipoConjunto;
+    }
+
+    public void setIeTipoConjunto(String ieTipoConjunto) {
+        this.ieTipoConjunto = ieTipoConjunto;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.id;
-        hash = 83 * hash + Objects.hashCode(this.nmTabelaNome);
-        hash = 83 * hash + Objects.hashCode(this.dsComandoSQL);
-        hash = 83 * hash + Objects.hashCode(this.ieTipoBanco);
-        hash = 83 * hash + Objects.hashCode(this.usuario);
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.nmTabelaNome);
+        hash = 37 * hash + Objects.hashCode(this.ieTipoBanco);
+        hash = 37 * hash + Objects.hashCode(this.usuario);
+        hash = 37 * hash + Objects.hashCode(this.ieTipoConjunto);
         return hash;
     }
 
@@ -96,17 +96,17 @@ public class Info implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Info other = (Info) obj;
+        final Conjunto other = (Conjunto) obj;
         if (this.id != other.id) {
             return false;
         }
         if (!Objects.equals(this.nmTabelaNome, other.nmTabelaNome)) {
             return false;
         }
-        if (!Objects.equals(this.dsComandoSQL, other.dsComandoSQL)) {
+        if (!Objects.equals(this.ieTipoBanco, other.ieTipoBanco)) {
             return false;
         }
-        if (!Objects.equals(this.ieTipoBanco, other.ieTipoBanco)) {
+        if (!Objects.equals(this.ieTipoConjunto, other.ieTipoConjunto)) {
             return false;
         }
         if (!Objects.equals(this.usuario, other.usuario)) {
@@ -114,5 +114,5 @@ public class Info implements Serializable {
         }
         return true;
     }
-
+    
 }

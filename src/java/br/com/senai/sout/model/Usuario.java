@@ -17,14 +17,14 @@ import javax.persistence.Id;
  *
  * @author Aluno
  */
-@Entity(name = "tb_usuario")
+@Entity(name = "Usuario")
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column
+    @Column(length = 30)
     private String login;
-    @Column
+    @Column(length = 30)
     private String senha;
     @Column
     private String nome;
@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
     private String email;
     @Column
     private String respostaSeguranca;
-    @Column
+    @Column(length = 1,  nullable = false)
     private String ieAdmin;
 
     public Usuario() {

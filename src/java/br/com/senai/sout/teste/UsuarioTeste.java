@@ -15,10 +15,14 @@ import java.util.List;
  */
 public class UsuarioTeste {
 
-    public static void main(String[] args) {
-        //testeCadastraUsuario();
+    public static void main(String[] args) throws Exception {
+        
+        testeEditaUsuario();
+
+        
+      
         //testeCadastraListarTodosUsuarios();
-        limpaUsuarios();
+        //limpaUsuarios();
     }
 
     private static void testeCadastraUsuario() {
@@ -34,6 +38,7 @@ public class UsuarioTeste {
         user.setNome("Eduardo Felipe dos Santos");
         user.setRespostaSeguranca("Resposta de segurança");
         user.setTelefone("30374054");
+        user.setIeAdmin("S");
         return user;
     }
 
@@ -50,8 +55,28 @@ public class UsuarioTeste {
     private static void limpaUsuarios() {
         System.out.println("-----------------Teste de limpeza de base-----------------");
         UsuarioDao dao = new UsuarioDao();
-        dao.limpaTabelaUsuario();
-        System.out.println("Qtd de usuário em base: " + dao.getQuantidadeRegistros());
+        for (Usuario usuario : dao.buscarTodos()) {
+            dao.excluir(usuario);
+            System.out.println("Excluido " + usuario.getNome());
+            System.out.println("Qtd de usuário em base: " + dao.getQuantidadeRegistros());
+        }
+
         System.out.println("---------------Fim teste de limpeza de base---------------");
+    }
+
+    private static void testeEditaUsuario() throws Exception {
+        UsuarioDao userDao = new UsuarioDao();
+        if(userDao.getQuantidadeRegistros() == 0L){
+             testeCadastraUsuario();
+        }
+        List<Usuario> lista = userDao.buscarTodos();
+        Usuario usuarioEditar = lista.get(0);
+        if(usuarioEditar.getId() == 0){
+            throw new Exception("Era pra ter um id");
+        }
+        System.out.println("-----------------Teste de edição de usuário-----------------");
+        usuarioEditar.setNome("Jonathan Vieira");
+        userDao.salvar(usuarioEditar);
+        System.out.println("---------------Fim Teste de edição de usuário---------------");
     }
 }
