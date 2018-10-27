@@ -6,7 +6,9 @@
 package br.com.senai.sout.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -27,9 +30,11 @@ public class Captura implements Serializable {
     private int id;
     @Column
     private String caminho;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.REMOVE) 
     @JoinColumn(name = "ID_CONJUNTO")
     private Conjunto conjuntoOrigem;
+    @OneToMany(mappedBy = "capturaTela" , cascade = CascadeType.REMOVE)
+    private List<Recorte> recorte;
 
     public int getId() {
         return id;
@@ -55,14 +60,23 @@ public class Captura implements Serializable {
         this.conjuntoOrigem = conjuntoOrigem;
     }
 
+    public List<Recorte> getRecorte() {
+        return recorte;
+    }
+
+    public void setRecorte(List<Recorte> recorte) {
+        this.recorte = recorte;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + this.id;
-        hash = 83 * hash + Objects.hashCode(this.caminho);
-        hash = 83 * hash + Objects.hashCode(this.conjuntoOrigem);
+        int hash = 5;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.caminho);
         return hash;
     }
+
+ 
 
     @Override
     public boolean equals(Object obj) {
@@ -82,10 +96,12 @@ public class Captura implements Serializable {
         if (!Objects.equals(this.caminho, other.caminho)) {
             return false;
         }
-        if (!Objects.equals(this.conjuntoOrigem, other.conjuntoOrigem)) {
+        if (!Objects.equals(this.recorte, other.recorte)) {
             return false;
         }
         return true;
     }
 
+     
+    
 }

@@ -6,7 +6,9 @@
 package br.com.senai.sout.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,9 +31,11 @@ public class Conjunto implements Serializable {
     private String nmTabelaNome;
     @Column(length = 3)
     private String ieTipoBanco;
-    @ManyToOne
+    @ManyToOne() 
     @JoinColumn(name = "ID_USUARIO")
-    private Usuario usuario;
+    private Usuario usuario;    
+    @OneToMany(mappedBy = "conjuntoOrigem" , cascade = CascadeType.REMOVE)
+    private List<Captura> capturas;
     @Column(length = 3,  nullable = false)
     private String ieTipoConjunto;
 
@@ -66,6 +71,14 @@ public class Conjunto implements Serializable {
         this.usuario = usuario;
     }
 
+    public List<Captura> getCapturas() {
+        return capturas;
+    }
+
+    public void setCapturas(List<Captura> capturas) {
+        this.capturas = capturas;
+    }
+
     public String getIeTipoConjunto() {
         return ieTipoConjunto;
     }
@@ -77,13 +90,15 @@ public class Conjunto implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + this.id;
-        hash = 37 * hash + Objects.hashCode(this.nmTabelaNome);
-        hash = 37 * hash + Objects.hashCode(this.ieTipoBanco);
-        hash = 37 * hash + Objects.hashCode(this.usuario);
-        hash = 37 * hash + Objects.hashCode(this.ieTipoConjunto);
+        hash = 47 * hash + this.id;
+        hash = 47 * hash + Objects.hashCode(this.nmTabelaNome);
+        hash = 47 * hash + Objects.hashCode(this.ieTipoBanco);
+        hash = 47 * hash + Objects.hashCode(this.usuario);
+        hash = 47 * hash + Objects.hashCode(this.ieTipoConjunto);
         return hash;
     }
+
+     
 
     @Override
     public boolean equals(Object obj) {
@@ -114,5 +129,8 @@ public class Conjunto implements Serializable {
         }
         return true;
     }
+
     
+
+
 }
