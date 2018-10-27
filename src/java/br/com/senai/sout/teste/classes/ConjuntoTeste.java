@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.senai.sout.teste;
+package br.com.senai.sout.teste.classes;
 
-import br.com.senai.sout.dao.ConjuntoDAO;
+import br.com.senai.sout.dao.ConjuntoDao;
 import br.com.senai.sout.dao.UsuarioDao;
 import br.com.senai.sout.model.Conjunto;
 import br.com.senai.sout.model.Usuario;
@@ -50,12 +50,12 @@ public class ConjuntoTeste {
 
     private static void cadastraConjuntoPadrao() {
        Conjunto conj = fazConjuntoPadraoSimples();
-       ConjuntoDAO conDao = new ConjuntoDAO();
+       ConjuntoDao conDao = new ConjuntoDao();
        conDao.salvar(conj);
     }
 
     private static void editaConjuntoPadrao() {
-        ConjuntoDAO dao = new ConjuntoDAO();
+        ConjuntoDao dao = new ConjuntoDao();
         if(dao.getQuantidadeRegistros() == 0){
             cadastraConjuntoPadrao();
         }
@@ -66,7 +66,7 @@ public class ConjuntoTeste {
     }
 
     private static void excluiConjuntoPadrao() {
-        ConjuntoDAO dao = new ConjuntoDAO();
+        ConjuntoDao dao = new ConjuntoDao();
         if(dao.getQuantidadeRegistros() == 0){
             cadastraConjuntoPadrao();
         }

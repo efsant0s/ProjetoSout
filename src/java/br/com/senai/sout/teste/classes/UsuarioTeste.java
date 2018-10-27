@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.senai.sout.teste;
+package br.com.senai.sout.teste.classes;
 
 import br.com.senai.sout.dao.UsuarioDao;
 import br.com.senai.sout.model.Usuario;
