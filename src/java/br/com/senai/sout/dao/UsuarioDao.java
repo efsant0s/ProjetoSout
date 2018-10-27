@@ -55,4 +55,10 @@ public class UsuarioDao {
                 createQuery("select count(u) qtd_registros from Usuario u")
                 .getSingleResult();
     }
+
+    public boolean isPossuiUsuarioAdmin() {
+        return ((Long) Repository.getEm().
+                createQuery("select count(u) qtd_registros from Usuario u where u.ieAdmin = 'S'")
+                .getSingleResult() > 0);
+    }
 }

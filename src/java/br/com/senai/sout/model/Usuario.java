@@ -41,10 +41,11 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String nomePadrao, String login, String senha) {
+    public Usuario(String nomePadrao, String login, String senha, String ieAdmin) {
         this.nome = nomePadrao;
         this.login = login;
         this.senha = senha;
+        this.ieAdmin = ieAdmin;
     }
 
     public int getId() {
