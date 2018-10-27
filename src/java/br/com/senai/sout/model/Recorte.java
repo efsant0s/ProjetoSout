@@ -7,6 +7,7 @@ package br.com.senai.sout.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Recorte implements Serializable {
     private String textoImagem;
     @Column
     private String dsComandoSQL;
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.REMOVE) 
     @JoinColumn(name = "ID_CAPTURA")
     private Captura capturaTela;
 

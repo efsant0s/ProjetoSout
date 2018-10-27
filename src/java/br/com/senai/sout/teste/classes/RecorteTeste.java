@@ -21,8 +21,8 @@ import br.com.senai.sout.model.Usuario;
 public class RecorteTeste {
 
     public static void main(String[] args) {
-        //cadastraRecortePadrao();
-        //editaRecortePadrao();
+         cadastraRecortePadrao();
+         editaRecortePadrao();
         //excluiRecortePadrao();
     }
 
