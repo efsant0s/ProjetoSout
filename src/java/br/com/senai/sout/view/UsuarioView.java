@@ -40,12 +40,12 @@ public class UsuarioView {
         atualizaLista();
         for (Usuario listaUsuario : listaUsuarios) {
             if (listaUsuario.getLogin() != null && listaUsuario.getLogin().equals(usuario.getLogin())) {
-                if (listaUsuario.getSenha() != null && listaUsuario.getSenha().equals(usuario.getSenha())) {
+                if (listaUsuario.getPassword() != null && listaUsuario.getPassword().equals(usuario.getPassword())) {
                     return "paginaInicial";
                 }
             }
         }
-        return "PaginaErro";
+        return "falha";
     }
 
     public List<Usuario> getListaUsuarios() {

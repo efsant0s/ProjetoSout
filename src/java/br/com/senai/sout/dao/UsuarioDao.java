@@ -58,7 +58,7 @@ public class UsuarioDao {
 
     public boolean isPossuiUsuarioAdmin() {
         return ((Long) Repository.getEm().
-                createQuery("select count(u) qtd_registros from Usuario u where u.ieAdmin = 'S'")
+                createQuery("select count(u) qtd_registros from Usuario u where u.iePermissao = 'ROLE_ADMIN'")
                 .getSingleResult() > 0);
     }
 }

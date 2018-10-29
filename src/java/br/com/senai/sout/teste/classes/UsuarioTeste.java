@@ -37,11 +37,11 @@ public class UsuarioTeste {
     private static Usuario fazUsuarioPadraoSimples() {
         Usuario user = new Usuario();
         user.setLogin("123");
-        user.setSenha("123");
+        user.setPassword("123");
         user.setNome("Eduardo Felipe dos Santos");
         user.setRespostaSeguranca("Resposta de segurança");
         user.setTelefone("30374054");
-        user.setIeAdmin("S");
+        user.setIePermissao("ROLE_ADMIN");
         return user;
     }
 
