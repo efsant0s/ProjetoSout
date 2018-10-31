@@ -22,18 +22,10 @@ public class UsuarioView {
     private Usuario usuario = new Usuario();
 
     public void fazUsuarioDefault() {
-        boolean semAdmin = true;
-        for (Usuario listaUsuario : listaUsuarios) {
-            if (listaUsuario.getLogin() != null && listaUsuario.getLogin().equals("admin")) {
-                if (listaUsuario.getSenha() != null && listaUsuario.getSenha().equals("admin")) {
-                    semAdmin = false;
-                }
-            }
-
-        }
-        if (semAdmin) {
-            usuarioDao.salvar((new Usuario("usuarioPadrao", "admin", "admin")));
-        }
+         if(!usuarioDao.isPossuiUsuarioAdmin()){
+             usuarioDao.salvar(new Usuario("nomePadrao", "login", "senhaPadrao", "S"));
+         }
+        
 
     }
 
@@ -47,14 +39,13 @@ public class UsuarioView {
         fazUsuarioDefault();
         atualizaLista();
         for (Usuario listaUsuario : listaUsuarios) {
-
-            if (listaUsuario.getLogin() != null && listaUsuario.getLogin().equals("admin")) {
-                if (listaUsuario.getSenha() != null && listaUsuario.getSenha().equals("admin")) {
+            if (listaUsuario.getLogin() != null && listaUsuario.getLogin().equals(usuario.getLogin())) {
+                if (listaUsuario.getPassword() != null && listaUsuario.getPassword().equals(usuario.getPassword())) {
                     return "paginaInicial";
                 }
             }
         }
-        return "loginInvalido";
+        return "falha";
     }
 
     public List<Usuario> getListaUsuarios() {

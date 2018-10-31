@@ -17,12 +17,15 @@ public class UsuarioTeste {
 
     public static void main(String[] args) throws Exception {
         
-        testeEditaUsuario();
+        //testeEditaUsuario();
 
         
       
         //testeCadastraListarTodosUsuarios();
         //limpaUsuarios();
+        testeCadastraUsuario();
+        verificaUsuarioAdmin();
+        
     }
 
     private static void testeCadastraUsuario() {
@@ -33,12 +36,12 @@ public class UsuarioTeste {
 
     private static Usuario fazUsuarioPadraoSimples() {
         Usuario user = new Usuario();
-        user.setLogin("LoginTeste");
-        user.setSenha("senhaUsuario");
+        user.setLogin("123");
+        user.setPassword("123");
         user.setNome("Eduardo Felipe dos Santos");
         user.setRespostaSeguranca("Resposta de segurança");
         user.setTelefone("30374054");
-        user.setIeAdmin("S");
+        user.setIePermissao("ROLE_ADMIN");
         return user;
     }
 
@@ -78,5 +81,14 @@ public class UsuarioTeste {
         usuarioEditar.setNome("Jonathan Vieira");
         userDao.salvar(usuarioEditar);
         System.out.println("---------------Fim Teste de edição de usuário---------------");
+    }
+
+    private static void verificaUsuarioAdmin() {
+        UsuarioDao userDao = new UsuarioDao();
+        if(userDao.isPossuiUsuarioAdmin()){
+            System.out.println("Possui admin");
+        }else{
+            System.out.println("Não possui admin");
+        }
     }
 }

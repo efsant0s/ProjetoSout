@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     @Column(length = 30)
     private String login;
     @Column(length = 30)
-    private String senha;
+    private String password;
     @Column
     private String nome;
     @Column
@@ -34,17 +34,18 @@ public class Usuario implements Serializable {
     private String email;
     @Column
     private String respostaSeguranca;
-    @Column(length = 1,  nullable = false)
-    private String ieAdmin;
+    @Column(nullable = false)
+    private String iePermissao;
 
     public Usuario() {
 
     }
 
-    public Usuario(String nomePadrao, String login, String senha) {
+    public Usuario(String nomePadrao, String login, String password, String iePermissao) {
         this.nome = nomePadrao;
         this.login = login;
-        this.senha = senha;
+        this.password = password;
+        this.iePermissao = iePermissao;
     }
 
     public int getId() {
@@ -87,12 +88,12 @@ public class Usuario implements Serializable {
         this.respostaSeguranca = respostaSeguranca;
     }
 
-    public String getIeAdmin() {
-        return ieAdmin;
+    public String getIePermissao() {
+        return iePermissao;
     }
 
-    public void setIeAdmin(String ieAdmin) {
-        this.ieAdmin = ieAdmin;
+    public void setIePermissao(String iePermissao) {
+        this.iePermissao = iePermissao;
     }
 
     public String getLogin() {
@@ -103,12 +104,12 @@ public class Usuario implements Serializable {
         this.login = login;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -116,12 +117,12 @@ public class Usuario implements Serializable {
         int hash = 7;
         hash = 83 * hash + this.id;
         hash = 83 * hash + Objects.hashCode(this.login);
-        hash = 83 * hash + Objects.hashCode(this.senha);
+        hash = 83 * hash + Objects.hashCode(this.password);
         hash = 83 * hash + Objects.hashCode(this.nome);
         hash = 83 * hash + Objects.hashCode(this.telefone);
         hash = 83 * hash + Objects.hashCode(this.email);
         hash = 83 * hash + Objects.hashCode(this.respostaSeguranca);
-        hash = 83 * hash + Objects.hashCode(this.ieAdmin);
+        hash = 83 * hash + Objects.hashCode(this.iePermissao);
         return hash;
     }
 
@@ -143,7 +144,7 @@ public class Usuario implements Serializable {
         if (!Objects.equals(this.login, other.login)) {
             return false;
         }
-        if (!Objects.equals(this.senha, other.senha)) {
+        if (!Objects.equals(this.password, other.password)) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
@@ -158,7 +159,7 @@ public class Usuario implements Serializable {
         if (!Objects.equals(this.respostaSeguranca, other.respostaSeguranca)) {
             return false;
         }
-        if (!Objects.equals(this.ieAdmin, other.ieAdmin)) {
+        if (!Objects.equals(this.iePermissao, other.iePermissao)) {
             return false;
         }
         return true;

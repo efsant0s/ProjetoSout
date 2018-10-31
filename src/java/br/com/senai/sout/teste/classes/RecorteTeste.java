@@ -44,11 +44,11 @@ public class RecorteTeste {
     private static Usuario fazUsuarioPadraoSimples() {
         Usuario user = new Usuario();
         user.setLogin("LoginTeste");
-        user.setSenha("senhaUsuario");
+        user.setPassword("senhaUsuario");
         user.setNome("Eduardo Felipe dos Santos");
         user.setRespostaSeguranca("Resposta de segurança");
         user.setTelefone("30374054");
-        user.setIeAdmin("S");
+        user.setIePermissao("ROLE_ADMIN");
         return user;
     }
 

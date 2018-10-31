@@ -7,14 +7,8 @@
     </h:head>
     <h:body>
         <h:form  class="mx-auto" style="width: 200px; margin-top: 200px;">
-            <br/>
-            <h:outputText id="nome" value="Login" />
-            <h:inputText value="#{usuarioView.usuario.login}" />
-            <br/>  
-            <h:outputText value="Senha" />
-            <h:inputSecret value="#{usuarioView.usuario.senha}" />
-            <br/>
-            <h:commandButton value ="logar" action="#{usuarioView.loginUsuario()}"/>
+          
+            <h:commandButton value ="logar" action="login.jsf"/>
 
 
         </h:form>
