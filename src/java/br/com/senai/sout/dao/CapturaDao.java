@@ -40,4 +40,9 @@ public class CapturaDao {
                 createQuery("select count(u) qtd_registros from Captura u")
                 .getSingleResult();
     }
+    public List<Captura> buscarTodosByConjunto(int idConjunto){
+        return Repository.getEm().
+                createQuery("select c from Captura c where c.conjuntoOrigem.id = :idConjunto").setParameter("idConjunto",  + idConjunto).getResultList();
+    }  
+
 }

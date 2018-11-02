@@ -21,6 +21,7 @@ public class CapturaTeste {
         //cadastraCapturaPadrao();
         //editaCapturaPadrao();
         //excluiCapturaPadrao();
+        buscaCapturasByConjunto();
     }
      private static Conjunto fazConjuntoPadraoSimples() {
        Conjunto conj = new Conjunto();
@@ -90,6 +91,18 @@ public class CapturaTeste {
         }
         Captura capt = dao.buscarTodos().get(0);
         dao.exclui(capt);
+    }
+
+    private static void buscaCapturasByConjunto() {
+        CapturaDao dao = new CapturaDao();
+        if(dao.getQuantidadeRegistros() == 0){
+            cadastraCapturaPadrao();
+        }
+        ConjuntoDao conjDao = new ConjuntoDao();
+        Conjunto conj = conjDao.buscarTodos().get(0);
+        for (Captura captura : dao.buscarTodosByConjunto(2)) {
+            System.out.println(captura.getCaminho());
+        }
     }
 
 }

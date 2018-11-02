@@ -13,44 +13,41 @@
             <h:outputText id="nome" value="Nome tabela" />
             <h:inputText value="#{conjuntoView.conjunto.nmTabelaNome}" />
             <br/>
-            <h:outputText id="nome" value="" />
-            <h:inputText value="#{conjuntoView.conjunto.ieTipoBanco}" />
-            <br/>
-
         </h:form>
+        <h:form enctype="multipart/form-data">
+            <div id="upload-button">
+                <h:inputFile value="#{conjuntoView.image}">
+                    <f:passThroughAttribute name="accept" value="image/png"/>
+                    <f:ajax event="change" listener="#{conjuntoView.insereImagem()}" execute="@form" render="@form"/>
+                </h:inputFile>
+            </div>
+        </h:form>
+
         <h:form style="float: right;width: 70%; padding-left: 1px; padding-right: 1px;">
             <table style="width: 100%;height: 100%; float: inside"> 
                 <tr>
                     <th>Nome</th>
-                    <th>Quantidade</th>
                     <th>Ações</th>
                 </tr>
-
-                <ui:repeat var="elem" value="#{capturaView.capturas}">
-
+                <ui:repeat var="elem" value="#{conjuntoView.listaImagens}">
                     <tr>                       
                         <td>
-
-                            <h:inputText style="width: 100%" value="#{elem.caminho}" />
+                            <h:graphicImage library="img" name="#{elem.caminho}">
+                            </h:graphicImage>
+                            <div>
+                                #{elem.caminho}
+                            </div>
                         </td>
-                        <td>
-
-                            <h:inputText style="width: 100%" value="#{elem.conjuntoOrigem.id}"
-                                         />
-                        </td>
-                        <td>
-                            <h:commandLink value="Editar" 
-                                           action="#{produtoView.setProduto(elem)}" />
-
+                        <td>                            
                             <h:commandLink value="Excluir" 
-                                           action="#{produtoView.deletaProduto(elem)}" />
-
-
+                                           action="#{capturaView.deletaCaptura(elem)}" />
                         </td>
                     </tr>
                 </ui:repeat>
             </table>
+
         </h:form>
+
     </h:body>
 </html>
 
