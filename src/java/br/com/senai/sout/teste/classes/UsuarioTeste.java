@@ -16,8 +16,8 @@ import java.util.List;
 public class UsuarioTeste {
 
     public static void main(String[] args) throws Exception {
-        
-        testeEditaUsuario();
+        testeCadastraUsuario();
+        //testeEditaUsuario();
 
         
       
@@ -30,8 +30,10 @@ public class UsuarioTeste {
 
     private static void testeCadastraUsuario() {
         Usuario edu = fazUsuarioPadraoSimples();
+        System.out.println(edu.getId());
         UsuarioDao dao = new UsuarioDao();
         dao.salvar(edu);
+        System.out.println(edu.getId());
     }
 
     private static Usuario fazUsuarioPadraoSimples() {
