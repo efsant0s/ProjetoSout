@@ -11,8 +11,7 @@ http://www.springframework.org/schema/security/spring-security-3.0.xsd">
     <http auto-config="true" access-denied-page="/negado.jsf">
         <form-login login-page="/login.jsf" authentication-failure-url="/falha.jsf" default-target-url="/inicio.jsf"/>
         <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-        <intercept-url pattern="/relatorios/**" access="ROLE_RELATS" />
-        <intercept-url pattern="/financeiro/**" access="ROLE_FINANC" />
+        <intercept-url pattern="/usuario/**" access="ROLE_ADMIN" />
         <logout invalidate-session="true" logout-success-url="/index.jsf" logout-url="/logout"/>
     </http>
     

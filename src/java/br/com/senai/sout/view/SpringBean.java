@@ -52,12 +52,7 @@ public class SpringBean {
         if (permissoes.contains("ROLE_ADMIN")) {
             return url + "/admin/testeWilliam.jsf";
         }
-        if (permissoes.contains("ROLE_RELATS")) {
-            return url + "/relatorios/index.jsf";
-        }
-        if (permissoes.contains("ROLE_FINANC")) {
-            return url + "/financeiro/indexFinanceiro.jsf";
-        }
+      
         return url + "index.jsf";
     }
 }
