@@ -17,14 +17,14 @@ public class UsuarioTeste {
 
     public static void main(String[] args) throws Exception {
         
-        //testeEditaUsuario();
+        testeEditaUsuario();
 
         
       
         //testeCadastraListarTodosUsuarios();
         //limpaUsuarios();
-        testeCadastraUsuario();
-        verificaUsuarioAdmin();
+        //testeCadastraUsuario();
+        //verificaUsuarioAdmin();
         
     }
 
